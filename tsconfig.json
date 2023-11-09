@@ -15,7 +15,7 @@
     "./api/*.ts",
     "./*.js",
     "src/**/*.ts",
-    "test/**/*.ts",
+    "src/**/*.js",
   ],
   "exclude": ["node_modules"]
 }
