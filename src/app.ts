@@ -1,10 +1,8 @@
 import express from 'express';
 import morgan from 'morgan';
-import helmet from 'helmet';
 import cors from 'cors';
 
 import * as middlewares from './utils/middlewares';
-import api from './api';
 import remazonRouter from './api/remazon-prime/remazon.router';
 // import MessageResponse from './interfaces/MessageResponse';
 
