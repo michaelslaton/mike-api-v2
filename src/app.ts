@@ -19,14 +19,9 @@ app.use(express.json());
 
 // app.get<{}, MessageResponse>('/', (req, res) => {
 //   res.json({
-//     message: '🦄🌈✨👋🌎🌍🌏✨🌈🦄',
+//     message: 'this is a message',
 //   });
 // });
-app.get("/", (req, res) => {
-    res.json({
-      message: '🦄🌈✨👋🌎🌍🌏✨🌈🦄',
-    });
-})
 
 app.use('/remazon', remazonRouter);
 
