@@ -4,9 +4,8 @@ import { asyncErrorBoundary } from '../../utils/middlewares';
 import { Request, Response } from 'express';
 
 async function initialLoad(req: Request, res: Response) {
-  return res.json({
-    message: "This is where the initial load function will go!"
-  });
+  const data = await service.initialLoad();
+  return res.json({ data });
 };
 
 // Projects -------------------------------------------------------------->
