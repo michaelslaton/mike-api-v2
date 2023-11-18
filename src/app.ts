@@ -4,7 +4,6 @@ import cors from 'cors';
 
 import * as middlewares from './utils/middlewares';
 import remazonRouter from './api/remazon-prime/remazon.router';
-// import MessageResponse from './interfaces/MessageResponse';
 
 require('dotenv').config();
 
@@ -15,11 +14,13 @@ app.use(morgan('dev'));
 app.use(cors());
 app.use(express.json());
 
-// app.get<{}, MessageResponse>('/', (req, res) => {
-//   res.json({
-//     message: 'this is a message',
-//   });
-// });
+app.get('/', (req, res) => {
+  res.json({
+    message1: `Welcome to Mike Slaton's all purpose API!`,
+    message2: `You probably shouldn't be here!`,
+    message3: `Have a nice day!`,
+  });
+});
 
 app.use('/remazon', remazonRouter);
 
