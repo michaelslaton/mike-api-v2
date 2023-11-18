@@ -1,4 +1,6 @@
-exports.seed = function (knex) {
+import { Knex } from 'knex';
+
+export async function seed (knex: Knex): Promise<void> {
   return knex("rem_employees").insert([
     {
       name: "Rembo",

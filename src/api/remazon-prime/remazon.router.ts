@@ -6,6 +6,11 @@ import Todo from './remazon.model';
 const router = Router();
 
 router
+  .route("/")
+  .get(controller.initialLoad)
+  .all(methodNotAllowed);
+
+router
   .route("/projects")
   .get(controller.listProjects)
   .post(controller.createProject)

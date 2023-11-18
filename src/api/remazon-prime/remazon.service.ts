@@ -1,8 +1,11 @@
 import knex from '../../db/connections';
+import EmployeeType, { NewEmployeeType } from '../../types/employeeType';
+import ProjectType, { NewProjectType } from '../../types/projectType';
+import RankType, { NewRankType } from '../../types/rankType';
 
 // Projects -------------------------------------------------------------->
 
-function listProjects(){
+function listProjects(): ProjectType[] {
   return knex("rem_projects")
   .select(
     "rem_projects.id",
@@ -17,80 +20,71 @@ function listProjects(){
   .orderBy("rem_projects.id");
 };
 
-function createProject(project: any) {
+function createProject(project: NewProjectType): ProjectType {
   return knex("rem_projects")
     .insert(project)
     .returning("*")
-    .then((data: any) => data[0]);
+    .then((data: ProjectType[]) => data[0]);
 };
 
-function updateProject(id: any, updateProject: any) {
+function updateProject(id: number, updatedProject: ProjectType): ProjectType {
   return knex("rem_projects")
     .where({ id })
-    .update(updateProject)
+    .update(updatedProject)
     .returning("*")
-    .then((data: any) => data[0]);
+    .then((data: ProjectType[]) => data[0]);
 };
 
 // Employees ------------------------------------------------------------->
 
-function getEmployee(uid: any) {
+function getEmployee(uid: string): EmployeeType {
   return knex("rem_employees")
     .where({ uid })
-    .then((data: any) => data[0]);
+    .then((data: EmployeeType[]) => data[0]);
 };
 
-function listEmployees(){
+function listEmployees(): EmployeeType[] {
   return knex("rem_employees")
   .select("*")
   .orderBy("rank");
 };
 
-function createEmployee(employee: any) {
+function createEmployee(employee: NewEmployeeType): EmployeeType {
   return knex("rem_employees")
     .insert(employee)
     .returning("*")
-    .then((data: any) => data[0]);
+    .then((data: EmployeeType[]) => data[0]);
 };
 
-function updateEmployee(id: any, updatedEmployee: any) {
+function updateEmployee(id: number, updatedEmployee: EmployeeType) {
   return knex("rem_employees")
     .where({ id })
     .update(updatedEmployee)
     .returning("*")
-    .then((data: any) => data[0]);
+    .then((data: EmployeeType[]) => data[0]);
 };
 
 // Ranks ----------------------------------------------------------------->
 
-function listRanks(){
+function listRanks(): RankType[] {
   return knex("rem_ranks")
   .select("*")
   .orderBy("rank");
 };
 
-function createRank(newRank: any) {
+function createRank(newRank: NewRankType) {
   return knex("rem_ranks")
     .insert(newRank)
     .returning("*")
-    .then((data: any) => data[0]);
+    .then((data: RankType[]) => data[0]);
 };
 
-function updateRank(id: any, updatedRank: any) {
+function updateRank(id: number, updatedRank: RankType) {
   return knex("rem_ranks")
     .where({ id })
     .update(updatedRank)
     .returning("*")
-    .then((data: any) => data[0]);
-};
-
-// Users ----------------------------------------------------------------->
-
-function createUser(newUser: any) {
-  return knex("rem_users")
-    .insert(newUser)
-    .returning("*")
-    .then((data: any) => data[0]);
+    .then((data: RankType[]) => data[0]);
 };
 
 // Applications ---------------------------------------------------------->

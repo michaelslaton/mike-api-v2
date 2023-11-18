@@ -1,6 +1,13 @@
 const service = require("./remazon.service");
+import EmployeeType from '../../types/employeeType';
 import { asyncErrorBoundary } from '../../utils/middlewares';
 import { Request, Response } from 'express';
+
+async function initialLoad(req: Request, res: Response) {
+  return res.json({
+    message: "This is where the initial load function will go!"
+  });
+};
 
 // Projects -------------------------------------------------------------->
 
@@ -24,24 +31,24 @@ async function updateProject(req: Request, res: Response) {
 
 // Employees ------------------------------------------------------------->
 
-async function getEmployee(req: Request, res: Response) {
+async function getEmployee(req: Request, res: Response): Promise<void> {
   const { uid } = req.params;
   const data = await service.getEmployee(uid);
   res.status(200).json({ data });
 };
 
-async function listEmployees(req: Request, res: Response) {
+async function listEmployees(req: Request, res: Response): Promise<any> {
   let data = await service.listEmployees();
   return res.json({data})
 };
 
-async function createEmployee(req: Request, res: Response) {
+async function createEmployee(req: Request, res: Response): Promise<void> {
   let newEmployee = req.body;
   const data = await service.createEmployee(newEmployee);
   res.status(201).json({ data });
 };
 
-async function updateEmployee(req: Request, res: Response) {
+async function updateEmployee(req: Request, res: Response): Promise<void> {
   const updatedEmployee = req.body;
   const data = await service.updateEmployee(updatedEmployee.id, updatedEmployee);
   res.status(200).json({ data });
@@ -80,6 +87,7 @@ async function createNotification(req: Request, res: Response) {
 };
 
 export default {
+  initialLoad: [asyncErrorBoundary(initialLoad)],
   // Projects -------------------------------------------------------------->
   listProjects: [asyncErrorBoundary(listProjects)],
   createProject: [asyncErrorBoundary(createProject)],
