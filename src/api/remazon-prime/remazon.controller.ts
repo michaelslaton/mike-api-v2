@@ -29,6 +29,12 @@ async function updateProject(req: Request, res: Response) {
   res.status(200).json({ data });
 };
 
+async function deleteProject(req: Request, res: Response) {
+  const { id } = req.params;
+  await service.deleteProject(id);
+  res.sendStatus(204);
+}
+
 // Employees ------------------------------------------------------------->
 
 async function getEmployee(req: Request, res: Response): Promise<void> {
@@ -73,6 +79,13 @@ async function updateRank(req: Request, res: Response) {
   res.status(200).json({ data });
 };
 
+async function deleteRank(req: Request, res: Response) {
+  const { id } = req.params;
+  if ( Number(id) === 1 ) return res.sendStatus(403);
+  await service.deleteRank(id);
+  res.sendStatus(204);
+};
+
 // Applications ------------------------------------------------------------------->
 
 async function listNotifications(req: Request, res: Response) {
@@ -92,6 +105,7 @@ export default {
   listProjects: [asyncErrorBoundary(listProjects)],
   createProject: [asyncErrorBoundary(createProject)],
   updateProject: [asyncErrorBoundary(updateProject)],
+  deleteProject: [asyncErrorBoundary(deleteProject)],
   // Employees ------------------------------------------------------------->
   getEmployee: [asyncErrorBoundary(getEmployee)],
   listEmployees: [asyncErrorBoundary(listEmployees)],
@@ -101,6 +115,7 @@ export default {
   listRanks: [asyncErrorBoundary(listRanks)],
   createRank: [asyncErrorBoundary(createRank)],
   updateRank: [asyncErrorBoundary(updateRank)],
+  deleteRank: [asyncErrorBoundary(deleteRank)],
   // Notifications ----------------------------------------------------------->
   listNotifications: [asyncErrorBoundary(listNotifications)],
   createNotification: [asyncErrorBoundary(createNotification)],

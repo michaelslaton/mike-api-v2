@@ -16,6 +16,11 @@ router
   .post(controller.createProject)
   .put(controller.updateProject)
   .all(methodNotAllowed);
+
+router
+  .route("/projects/:id")
+  .delete(controller.deleteProject)
+  .all(methodNotAllowed);
   
 router
   .route("/employees")
@@ -34,6 +39,11 @@ router
   .get(controller.listRanks)
   .post(controller.createRank)
   .put(controller.updateRank)
+  .all(methodNotAllowed);
+
+  router
+  .route("/ranks/:id")
+  .delete(controller.deleteRank)
   .all(methodNotAllowed);
 
   router

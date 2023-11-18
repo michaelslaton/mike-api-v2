@@ -35,6 +35,12 @@ function updateProject(id: number, updatedProject: ProjectType): ProjectType {
     .then((data: ProjectType[]) => data[0]);
 };
 
+function deleteProject(id: Number) {
+  return knex("rem_projects")
+    .where({ id })
+    .del();
+};
+
 // Employees ------------------------------------------------------------->
 
 function getEmployee(uid: string): EmployeeType {
@@ -87,7 +93,13 @@ function updateRank(id: number, updatedRank: RankType) {
     .then((data: RankType[]) => data[0]);
 };
 
-// Applications ---------------------------------------------------------->
+function deleteRank(id: Number) {
+  return knex("rem_ranks")
+    .where({ id })
+    .del();
+};
+
+// Notifications ---------------------------------------------------------->
 
 function listNotifications(){
   return knex("rem_notifications")
@@ -107,6 +119,7 @@ module.exports = {
   listProjects,
   createProject,
   updateProject,
+  deleteProject,
   // Employees ------------------------------------------------------------->
   getEmployee,
   listEmployees,
@@ -116,6 +129,7 @@ module.exports = {
   listRanks,
   createRank,
   updateRank,
+  deleteRank,
   // Notifications ---------------------------------------------------------->
   listNotifications,
   createNotification,
