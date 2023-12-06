@@ -96,52 +96,52 @@ function updateRank(id: number, updatedRank: RankType) {
 function deleteRank(id: Number) {
   return knex("rem_ranks")
   .where({ id })
-    .del();
-  };
+  .del();
+};
   
-  // Notifications ---------------------------------------------------------->
+// Notifications ---------------------------------------------------------->
+
+function listNotifications(){
+  return knex("rem_notifications")
+  .select("*")
+  .orderBy("id");
+};
+
+function createNotification(newNotification: any) {
+  return knex("rem_notifications")
+  .insert(newNotification)
+  .returning("*")
+  .then((data: any) => data[0]);
+};
+
+// Utility --------------------------------------------------------------->
+
+async function initialLoad() {
+  const employees = await listEmployees();
+  const projects = await listProjects();
+  const ranks = await listRanks();
+  return { employees, projects, ranks };
+};
   
-  function listNotifications(){
-    return knex("rem_notifications")
-    .select("*")
-    .orderBy("id");
-  };
-  
-  function createNotification(newNotification: any) {
-    return knex("rem_notifications")
-    .insert(newNotification)
-    .returning("*")
-    .then((data: any) => data[0]);
-  };
-  
+module.exports = {
   // Utility --------------------------------------------------------------->
-  
-  async function initialLoad() {
-    const employees = await listEmployees();
-    const projects = await listProjects();
-    const ranks = await listRanks();
-    return { employees, projects, ranks };
-  };
-  
-  module.exports = {
-    // Utility --------------------------------------------------------------->
-    initialLoad,
-    // Projects -------------------------------------------------------------->
-    listProjects,
-    createProject,
-    updateProject,
-    deleteProject,
-    // Employees ------------------------------------------------------------->
-    getEmployee,
-    listEmployees,
-    createEmployee,
-    updateEmployee,
-    // Ranks ----------------------------------------------------------------->
-    listRanks,
-    createRank,
-    updateRank,
-    deleteRank,
-    // Notifications ---------------------------------------------------------->
-    listNotifications,
-    createNotification,
-  };
+  initialLoad,
+  // Projects -------------------------------------------------------------->
+  listProjects,
+  createProject,
+  updateProject,
+  deleteProject,
+  // Employees ------------------------------------------------------------->
+  getEmployee,
+  listEmployees,
+  createEmployee,
+  updateEmployee,
+  // Ranks ----------------------------------------------------------------->
+  listRanks,
+  createRank,
+  updateRank,
+  deleteRank,
+  // Notifications ---------------------------------------------------------->
+  listNotifications,
+  createNotification,
+};
