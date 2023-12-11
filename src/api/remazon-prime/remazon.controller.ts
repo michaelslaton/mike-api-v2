@@ -12,7 +12,6 @@ async function initialLoad(req: Request, res: Response) {
 
 async function listProjects(req: Request, res: Response) {
   let data = await service.listProjects();
-  console.log('working')
   return res.json({data});
 };
 

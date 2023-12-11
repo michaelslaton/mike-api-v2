@@ -10,8 +10,7 @@ function listProjects(): ProjectType[] {
   .select(
     "rem_projects.id",
     "rem_projects.name",
-    "rem_employees.name as host",
-    "rem_projects.host as hostId",
+    "rem_projects.host as host",
     "rem_projects.type",
     "rem_projects.description",
     "rem_projects.status"
