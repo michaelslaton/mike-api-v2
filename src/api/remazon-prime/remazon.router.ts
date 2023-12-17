@@ -11,6 +11,11 @@ router
   .all(methodNotAllowed);
 
 router
+  .route("/motd")
+  .get(controller.getMotd)
+  .all(methodNotAllowed);
+
+router
   .route("/projects")
   .get(controller.listProjects)
   .post(controller.createProject)
