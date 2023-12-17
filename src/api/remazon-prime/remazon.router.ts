@@ -13,6 +13,7 @@ router
 router
   .route("/motd")
   .get(controller.getMotd)
+  .put(controller.updateMotd)
   .all(methodNotAllowed);
 
 router

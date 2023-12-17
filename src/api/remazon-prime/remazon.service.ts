@@ -121,6 +121,14 @@ function getMotd() {
   .then((data: any) => data[0].motd);
 };
 
+function updateMotd(updatedMotd: string) {
+  return knex("rem_settings")
+  .where("id", 1)
+  .update(updatedMotd)
+  .returning("*")
+  .then((data: any) => data[0].motd);
+};
+
 async function initialLoad() {
   const motd = await getMotd();
   const employees = await listEmployees();
@@ -132,6 +140,7 @@ async function initialLoad() {
 module.exports = {
   // Settings --------------------------------------------------------------->
   getMotd,
+  updateMotd,
   initialLoad,
   // Projects -------------------------------------------------------------->
   listProjects,
