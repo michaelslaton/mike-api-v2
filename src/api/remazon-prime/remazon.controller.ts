@@ -8,6 +8,11 @@ async function initialLoad(req: Request, res: Response) {
   return res.json({ data });
 };
 
+async function getMotd(req: Request, res: Response) {
+  const data = await service.getMotd();
+  return res.json({ data });
+};
+
 // Projects -------------------------------------------------------------->
 
 async function listProjects(req: Request, res: Response) {
@@ -98,6 +103,8 @@ async function createNotification(req: Request, res: Response) {
 };
 
 export default {
+  // Settings -------------------------------------------------------------->
+  getMotd: [asyncErrorBoundary(getMotd)],
   initialLoad: [asyncErrorBoundary(initialLoad)],
   // Projects -------------------------------------------------------------->
   listProjects: [asyncErrorBoundary(listProjects)],

@@ -110,7 +110,7 @@ function createNotification(newNotification: any) {
   return knex("rem_notifications")
   .insert(newNotification)
   .returning("*")
-  .then((data: any) => data[0]);
+  .then((data: any) => data[0].motd);
 };
 
 // Utility --------------------------------------------------------------->
@@ -118,8 +118,8 @@ function createNotification(newNotification: any) {
 function getMotd() {
   return knex("rem_settings")
   .where("id", 1)
-  .then((data: any) => data[0]);
-}
+  .then((data: any) => data[0].motd);
+};
 
 async function initialLoad() {
   const motd = await getMotd();
@@ -130,7 +130,7 @@ async function initialLoad() {
 };
   
 module.exports = {
-  // Utility --------------------------------------------------------------->
+  // Settings --------------------------------------------------------------->
   getMotd,
   initialLoad,
   // Projects -------------------------------------------------------------->
