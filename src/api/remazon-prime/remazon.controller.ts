@@ -13,6 +13,12 @@ async function getMotd(req: Request, res: Response) {
   return res.json({ data });
 };
 
+async function updateMotd(req: Request, res: Response) {
+  const updatedMotd = req.body;
+  const data = await service.updateMotd(updatedMotd);
+  res.status(200).json({ data });
+};
+
 // Projects -------------------------------------------------------------->
 
 async function listProjects(req: Request, res: Response) {
@@ -48,7 +54,7 @@ async function getEmployee(req: Request, res: Response): Promise<void> {
 
 async function listEmployees(req: Request, res: Response): Promise<any> {
   let data = await service.listEmployees();
-  return res.json({data})
+  return res.json({data});
 };
 
 async function createEmployee(req: Request, res: Response): Promise<void> {
@@ -67,7 +73,7 @@ async function updateEmployee(req: Request, res: Response): Promise<void> {
 
 async function listRanks(req: Request, res: Response) {
   let data = await service.listRanks();
-  return res.json({data})
+  return res.json({data});
 };
 
 async function createRank(req: Request, res: Response) {
@@ -93,7 +99,7 @@ async function deleteRank(req: Request, res: Response) {
 
 async function listNotifications(req: Request, res: Response) {
   let data = await service.listNotifications();
-  return res.json({data})
+  return res.json({data});
 };
 
 async function createNotification(req: Request, res: Response) {
@@ -105,6 +111,7 @@ async function createNotification(req: Request, res: Response) {
 export default {
   // Settings -------------------------------------------------------------->
   getMotd: [asyncErrorBoundary(getMotd)],
+  updateMotd: [asyncErrorBoundary(updateMotd)],
   initialLoad: [asyncErrorBoundary(initialLoad)],
   // Projects -------------------------------------------------------------->
   listProjects: [asyncErrorBoundary(listProjects)],
