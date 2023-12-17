@@ -115,15 +115,23 @@ function createNotification(newNotification: any) {
 
 // Utility --------------------------------------------------------------->
 
+function getMotd() {
+  return knex("rem_settings")
+  .where("id", 1)
+  .then((data: any) => data[0]);
+}
+
 async function initialLoad() {
+  const motd = await getMotd();
   const employees = await listEmployees();
   const projects = await listProjects();
   const ranks = await listRanks();
-  return { employees, projects, ranks };
+  return { motd, employees, projects, ranks };
 };
   
 module.exports = {
   // Utility --------------------------------------------------------------->
+  getMotd,
   initialLoad,
   // Projects -------------------------------------------------------------->
   listProjects,
