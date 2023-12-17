@@ -2,7 +2,7 @@
   "compilerOptions": {
     "outDir": "dist",
     "sourceMap": true,
-    "target": "esnext",
+    "target": "ES6",
     "module": "commonjs",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
@@ -12,6 +12,7 @@
     "resolveJsonModule": true
   },
   "include": [
+    "**/*.ts",
     "./api/*.ts",
     "./*.js",
     "src/**/*.ts",
