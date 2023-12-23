@@ -11,7 +11,7 @@ export async function seed (knex: Knex): Promise<void> {
     {
       name: "Hunt Event",
       host: 2,
-      type: "Game",
+      type: "Game Night",
       description: "Lets do the current hunt event",
     },
   ]);

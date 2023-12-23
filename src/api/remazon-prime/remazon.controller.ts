@@ -1,5 +1,4 @@
 const service = require("./remazon.service");
-import EmployeeType from '../../types/employeeType';
 import { asyncErrorBoundary } from '../../utils/middlewares';
 import { Request, Response } from 'express';
 
@@ -95,7 +94,7 @@ async function deleteRank(req: Request, res: Response) {
   res.sendStatus(204);
 };
 
-// Applications ------------------------------------------------------------------->
+// Notifications ------------------------------------------------------------------->
 
 async function listNotifications(req: Request, res: Response) {
   let data = await service.listNotifications();

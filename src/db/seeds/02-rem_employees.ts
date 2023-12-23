@@ -14,12 +14,14 @@ export async function seed (knex: Knex): Promise<void> {
       name: "Ren",
       birthday: null,
       uid: "aSwNeBahYsNAEahwZqcjR8EO36b2",
+      rank: 3,
       description: "It's Mike!",
     },
     {
       name: "Wes",
       birthday: null,
       uid: "Px5kWtye6cNAbyZNQEvTBfe0c6u2",
+      rank: 2,
       description: "Hoobooie!!!",
     },
   ]);
