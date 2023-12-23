@@ -53,6 +53,10 @@ router
   .all(methodNotAllowed);
 
   router
+  .route("/awards")
+  .all(methodNotAllowed);
+
+  router
     .route("/notifications")
     .get(controller.listNotifications)
     .post(controller.createNotification)

@@ -5,17 +5,17 @@ export async function seed (knex: Knex): Promise<void> {
     {
       name: "Ceo",
       rank: 1,
-      color: "#ffa500",
+      color: "#00c8d6",
     },
     {
       name: "Head of Accounting",
       rank: 2,
-      color: "#ffa500",
+      color: "#0ec855",
     },
     {
       name: "Vice President",
       rank: 3,
-      color: "#ffa500",
+      color: "#7e00e6",
     },
     {
       name: "Shareholder",
