@@ -107,6 +107,13 @@ async function createNotification(req: Request, res: Response) {
   res.status(201).json({ data });
 };
 
+// Awards ------------------------------------------------------------------->
+
+async function listAwards(req: Request, res: Response) {
+  let data = await service.listAwards();
+  return res.json({data});
+};
+
 export default {
   // Settings -------------------------------------------------------------->
   getMotd: [asyncErrorBoundary(getMotd)],
@@ -122,12 +129,14 @@ export default {
   listEmployees: [asyncErrorBoundary(listEmployees)],
   createEmployee: [asyncErrorBoundary(createEmployee)],
   updateEmployee: [asyncErrorBoundary(updateEmployee)],
-  // Ranks ------------------------------------------------------------------>
+  // Ranks ----------------------------------------------------------------->
   listRanks: [asyncErrorBoundary(listRanks)],
   createRank: [asyncErrorBoundary(createRank)],
   updateRank: [asyncErrorBoundary(updateRank)],
   deleteRank: [asyncErrorBoundary(deleteRank)],
-  // Notifications ----------------------------------------------------------->
+  // Notifications --------------------------------------------------------->
   listNotifications: [asyncErrorBoundary(listNotifications)],
   createNotification: [asyncErrorBoundary(createNotification)],
+  // Awards ---------------------------------------------------------------->
+  listAwards: [asyncErrorBoundary(listAwards)],
 };

@@ -113,6 +113,14 @@ function createNotification(newNotification: any) {
   .then((data: any) => data[0].motd);
 };
 
+// Awards ----------------------------------------------------------------->
+
+function listAwards(){
+  return knex("rem_awards")
+  .select("*")
+  .orderBy("name");
+};
+
 // Utility --------------------------------------------------------------->
 
 function getMotd() {
@@ -132,9 +140,10 @@ function updateMotd(updatedMotd: string) {
 async function initialLoad() {
   const motd = await getMotd();
   const employees = await listEmployees();
+  const awards = await listAwards();
   const projects = await listProjects();
   const ranks = await listRanks();
-  return { motd, employees, projects, ranks };
+  return { motd, employees, projects, ranks, awards };
 };
   
 module.exports = {
@@ -157,7 +166,9 @@ module.exports = {
   createRank,
   updateRank,
   deleteRank,
-  // Notifications ---------------------------------------------------------->
+  // Notifications --------------------------------------------------------->
   listNotifications,
   createNotification,
+  // Awards ---------------------------------------------------------------->
+  listAwards,
 };

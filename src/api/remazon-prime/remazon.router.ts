@@ -54,6 +54,7 @@ router
 
   router
   .route("/awards")
+  .get(controller.listAwards)
   .all(methodNotAllowed);
 
   router
