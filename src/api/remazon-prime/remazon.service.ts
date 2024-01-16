@@ -1,4 +1,5 @@
 import knex from '../../db/connections';
+import AwardType, { NewAwardType } from '../../types/awardType';
 import EmployeeType, { NewEmployeeType } from '../../types/employeeType';
 import ProjectType, { NewProjectType } from '../../types/projectType';
 import RankType, { NewRankType } from '../../types/rankType';
@@ -121,6 +122,27 @@ function listAwards(){
   .orderBy("name");
 };
 
+function createAward(newAward: NewAwardType) {
+  return knex("rem_awards")
+  .insert(newAward)
+  .returning("*")
+  .then((data: AwardType[]) => data[0]);
+};
+
+function updateAward(id: number, updatedAward: AwardType) {
+  return knex("rem_awards")
+  .where({ id })
+  .update(updatedAward)
+  .returning("*")
+  .then((data: AwardType[]) => data[0]);
+};
+
+function deleteAward(id: Number) {
+  return knex("rem_awards")
+  .where({ id })
+  .del();
+};
+
 // Utility --------------------------------------------------------------->
 
 function getMotd() {
@@ -171,4 +193,7 @@ module.exports = {
   createNotification,
   // Awards ---------------------------------------------------------------->
   listAwards,
+  createAward,
+  updateAward,
+  deleteAward,
 };

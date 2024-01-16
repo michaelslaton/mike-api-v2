@@ -55,6 +55,13 @@ router
   router
   .route("/awards")
   .get(controller.listAwards)
+  .put(controller.updateAward)
+  .post(controller.createAward)
+  .all(methodNotAllowed);
+
+  router
+  .route("/awards/:id")
+  .delete(controller.deleteAward)
   .all(methodNotAllowed);
 
   router

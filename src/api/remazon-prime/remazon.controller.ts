@@ -114,6 +114,25 @@ async function listAwards(req: Request, res: Response) {
   return res.json({data});
 };
 
+async function createAward(req: Request, res: Response) {
+  let newAward = req.body;
+  const data = await service.createAward(newAward);
+  res.status(201).json({ data });
+};
+
+async function deleteAward(req: Request, res: Response) {
+  const { id } = req.params;
+  if ( Number(id) === 1 ) return res.sendStatus(403);
+  await service.deleteAward(id);
+  res.sendStatus(204);
+};
+
+async function updateAward(req: Request, res: Response) {
+  const updatedAward = req.body;
+  const data = await service.updateAward(updatedAward.id, updatedAward);
+  res.status(200).json({ data });
+};
+
 export default {
   // Settings -------------------------------------------------------------->
   getMotd: [asyncErrorBoundary(getMotd)],
@@ -139,4 +158,7 @@ export default {
   createNotification: [asyncErrorBoundary(createNotification)],
   // Awards ---------------------------------------------------------------->
   listAwards: [asyncErrorBoundary(listAwards)],
+  createAward: [asyncErrorBoundary(createAward)],
+  updateAward: [asyncErrorBoundary(updateAward)],
+  deleteAward: [asyncErrorBoundary(deleteAward)],
 };
