@@ -13,7 +13,6 @@ export async function up (knex: Knex): Promise<void> {
       .inTable("rem_ranks");
     table.boolean("admin").notNullable().defaultTo(false);
     table.string("description");
-    table.boolean("status").notNullable().defaultTo(true);
     table.boolean("locked").notNullable().defaultTo(false);
     table.timestamps(true, true);
   });
