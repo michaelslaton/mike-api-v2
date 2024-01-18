@@ -3,6 +3,12 @@ import { Knex } from 'knex';
 export async function seed (knex: Knex): Promise<void> {
   await knex("rem_ranks").insert([
     {
+      id: 0,
+      name: "Deactivated",
+      rank: 0,
+      color: "#404040",
+    },
+    {
       name: "Ceo",
       rank: 1,
       color: "#00c8d6",
