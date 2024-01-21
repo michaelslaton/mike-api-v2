@@ -12,6 +12,7 @@ function listProjects(): ProjectType[] {
     "rem_projects.id",
     "rem_projects.name",
     "rem_projects.host as host",
+    "rem_projects.date",
     "rem_projects.type",
     "rem_projects.description",
     "rem_projects.status"
