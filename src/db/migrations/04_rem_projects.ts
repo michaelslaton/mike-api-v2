@@ -9,6 +9,7 @@ export async function up (knex: Knex): Promise<void> {
       .foreign("host")
       .references("id")
       .inTable("rem_employees");
+    table.dateTime("date");
     table.string("type").notNullable();
     table.string("description").notNullable();
     table.boolean("status").notNullable().defaultTo(true);
