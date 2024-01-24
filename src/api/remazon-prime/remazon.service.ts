@@ -4,6 +4,29 @@ import EmployeeType, { NewEmployeeType } from '../../types/employeeType';
 import ProjectType, { NewProjectType } from '../../types/projectType';
 import RankType, { NewRankType } from '../../types/rankType';
 
+// Notifications ---------------------------------------------------------->
+
+async function listNotifications(uid: string){
+  const data = await knex("rem_notifications")
+  .select("*")
+  .orderBy("id");
+
+  return data.filter((notification: any)=> notification.users.split(",").includes(uid));
+};
+
+function createNotification(newNotification: any) {
+  return knex("rem_notifications")
+  .insert(newNotification)
+  .returning("*")
+  .then((data: any) => data[0]);
+};
+
+// function deleteNotification(id: Number) {
+//   return knex("rem_notifications")
+//   .where({ id })
+//   .del();
+// };
+
 // Projects -------------------------------------------------------------->
 
 function listProjects(): ProjectType[] {
@@ -11,9 +34,10 @@ function listProjects(): ProjectType[] {
   .select(
     "rem_projects.id",
     "rem_projects.name",
-    "rem_projects.host as host",
-    "rem_projects.date",
     "rem_projects.type",
+    "rem_projects.date",
+    "rem_projects.host as host",
+    "rem_projects.attending",
     "rem_projects.description",
     "rem_projects.status"
     )
@@ -98,21 +122,6 @@ function deleteRank(id: Number) {
   return knex("rem_ranks")
   .where({ id })
   .del();
-};
-  
-// Notifications ---------------------------------------------------------->
-
-function listNotifications(){
-  return knex("rem_notifications")
-  .select("*")
-  .orderBy("id");
-};
-
-function createNotification(newNotification: any) {
-  return knex("rem_notifications")
-  .insert(newNotification)
-  .returning("*")
-  .then((data: any) => data[0].motd);
 };
 
 // Awards ----------------------------------------------------------------->
