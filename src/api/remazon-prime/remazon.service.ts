@@ -1,6 +1,7 @@
 import knex from '../../db/connections';
 import AwardType, { NewAwardType } from '../../types/awardType';
 import EmployeeType, { NewEmployeeType } from '../../types/employeeType';
+import NotificationType, { NotificationPostType } from '../../types/notificationType';
 import ProjectType, { NewProjectType } from '../../types/projectType';
 import RankType, { NewRankType } from '../../types/rankType';
 
@@ -11,14 +12,14 @@ async function listNotifications(uid: string){
   .select("*")
   .orderBy("id");
 
-  return data.filter((notification: any)=> notification.users.split(",").includes(uid));
+  return data.filter((notification: NotificationType)=> notification.users.split(",").includes(uid));
 };
 
-function createNotification(newNotification: any) {
+function createNotification(newNotification: NotificationPostType) {
   return knex("rem_notifications")
   .insert(newNotification)
   .returning("*")
-  .then((data: any) => data[0]);
+  .then((data: NotificationType[]) => data[0]);
 };
 
 // function deleteNotification(id: Number) {
@@ -45,11 +46,25 @@ function listProjects(): ProjectType[] {
     .orderBy("rem_projects.id");
   };
   
-  function createProject(project: NewProjectType): ProjectType {
-    return knex("rem_projects")
+  async function createProject(project: NewProjectType): Promise<ProjectType> {
+    const newProject = await knex("rem_projects")
     .insert(project)
     .returning("*")
     .then((data: ProjectType[]) => data[0]);
+    
+    const employeeList: EmployeeType[] = await listEmployees();
+    const projectHost: EmployeeType | undefined = employeeList.find((employee)=> employee.id === project.host);
+    
+    const newNotification: NotificationPostType = {
+      type: 'project',
+      title: `New Project: ${project.name}`,
+      users: `${employeeList.map((employee)=> employee.uid).toString()}`,
+      message: `${projectHost!.name} has hosted a new project: ${project.name}`,
+    };
+
+    await createNotification(newNotification);
+
+    return newProject;
   };
   
   function updateProject(id: number, updatedProject: ProjectType): ProjectType {
