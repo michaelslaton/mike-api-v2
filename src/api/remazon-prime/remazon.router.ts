@@ -1,7 +1,7 @@
 import { Router, Request, Response } from 'express';
 import controller from './remazon.controller';
 import { methodNotAllowed } from '../../utils/middlewares';
-import Todo from './remazon.model';
+// import Todo from './remazon.model';
 
 const router = Router();
 
@@ -47,35 +47,39 @@ router
   .put(controller.updateRank)
   .all(methodNotAllowed);
 
-  router
+router
   .route("/ranks/:id")
   .delete(controller.deleteRank)
   .all(methodNotAllowed);
 
-  router
+router
   .route("/awards")
   .get(controller.listAwards)
   .put(controller.updateAward)
   .post(controller.createAward)
   .all(methodNotAllowed);
 
-  router
+router
   .route("/awards/:id")
   .delete(controller.deleteAward)
   .all(methodNotAllowed);
 
-  router
-    .route("/notifications")
-    .get(controller.listNotifications)
-    .post(controller.createNotification)
-    .all(methodNotAllowed);
+router
+  .route("/notifications")
+  .post(controller.createNotification)
+  .all(methodNotAllowed);
+  
+router
+  .route("/notifications/:uid")
+  .get(controller.listNotifications)
+  .all(methodNotAllowed);
 
-  router
-    .get('/todos', (req: Request, res: Response<Todo[]>) => {
-      res.json([{
-        content: 'Learn Typescript',
-        done: false,
-      }]);
-    })
+  // router
+  //   .get('/todos', (req: Request, res: Response<Todo[]>) => {
+  //     res.json([{
+  //       content: 'Learn Typescript',
+  //       done: false,
+  //     }]);
+  //   })
 
 export default router;

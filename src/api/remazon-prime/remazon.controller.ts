@@ -97,7 +97,8 @@ async function deleteRank(req: Request, res: Response) {
 // Notifications ------------------------------------------------------------------->
 
 async function listNotifications(req: Request, res: Response) {
-  let data = await service.listNotifications();
+  const { uid } = req.params;
+  let data = await service.listNotifications(uid);
   return res.json({data});
 };
 
