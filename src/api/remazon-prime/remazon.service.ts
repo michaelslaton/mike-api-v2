@@ -22,11 +22,34 @@ function createNotification(newNotification: NotificationPostType) {
   .then((data: NotificationType[]) => data[0]);
 };
 
-// function deleteNotification(id: Number) {
-//   return knex("rem_notifications")
-//   .where({ id })
-//   .del();
-// };
+// adjustNotification removes a user listed on a notification.
+// If there are no users left on the notification, the notification is deleted.
+// It then returns an updated list of notifications for the client to display.
+async function adjustNotification(uid: string, id: number) {
+  let updatedNotificationsList: NotificationType[] = []
+  const notification: NotificationType = await knex("rem_notifications")
+  .select("*")
+  .where({ id })
+  .first();
+
+  const attendingList: string[] = notification.users.split(",").filter((currentUid)=> currentUid !== uid);
+  if(attendingList.length < 1) {
+    await knex("rem_notifications")
+    .where({ id })
+    .del();
+
+    updatedNotificationsList = await listNotifications(uid);
+    return updatedNotificationsList;
+  };
+
+  const users: string = [...attendingList].toString();
+  await knex("rem_notifications")
+    .where({ id })
+    .update({ users });
+
+    updatedNotificationsList = await listNotifications(uid);
+    return updatedNotificationsList;
+};
 
 // Projects -------------------------------------------------------------->
 
@@ -216,6 +239,7 @@ module.exports = {
   // Notifications --------------------------------------------------------->
   listNotifications,
   createNotification,
+  adjustNotification,
   // Awards ---------------------------------------------------------------->
   listAwards,
   createAward,

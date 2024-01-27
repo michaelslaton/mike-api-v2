@@ -102,6 +102,12 @@ async function listNotifications(req: Request, res: Response) {
   return res.json({data});
 };
 
+async function adjustNotification(req: Request, res: Response) {
+  const { uid, id } = req.params;
+  let data = await service.adjustNotification(uid, id);
+  res.status(201).json({ data });
+};
+
 async function createNotification(req: Request, res: Response) {
   let newNotification = req.body;
   const data = await service.createNotification(newNotification);
@@ -157,6 +163,7 @@ export default {
   // Notifications --------------------------------------------------------->
   listNotifications: [asyncErrorBoundary(listNotifications)],
   createNotification: [asyncErrorBoundary(createNotification)],
+  adjustNotification: [asyncErrorBoundary(adjustNotification)],
   // Awards ---------------------------------------------------------------->
   listAwards: [asyncErrorBoundary(listAwards)],
   createAward: [asyncErrorBoundary(createAward)],
