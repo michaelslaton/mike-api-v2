@@ -73,6 +73,11 @@ router
   .route("/notifications/:uid")
   .get(controller.listNotifications)
   .all(methodNotAllowed);
+  
+router
+  .route("/notifications/:uid/:id")
+  .put(controller.adjustNotification)
+  .all(methodNotAllowed);
 
   // router
   //   .get('/todos', (req: Request, res: Response<Todo[]>) => {
