@@ -62,6 +62,7 @@ function listProjects(): ProjectType[] {
     "rem_projects.date",
     "rem_projects.host as host",
     "rem_projects.attending",
+    "rem_projects.regularity",
     "rem_projects.description",
     "rem_projects.status"
     )
@@ -174,7 +175,7 @@ function createAward(newAward: NewAwardType) {
   return knex("rem_awards")
   .insert(newAward)
   .returning("*")
-  .then((data: AwardType[]) => data[0]);
+  .then((data: EmployeeType[]) => data[0]);
 };
 
 function updateAward(id: number, updatedAward: AwardType) {

@@ -6,6 +6,10 @@ export async function seed (knex: Knex): Promise<void> {
       name: "Weebo Belt",
     },
     {
+      name: "Employee of the Month",
+      type: "trophy"
+    },
+    {
       name: "Drift Belt",
       holder: 1,
     },
