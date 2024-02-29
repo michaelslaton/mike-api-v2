@@ -104,12 +104,12 @@ async function listNotifications(req: Request, res: Response) {
 
 async function adjustNotification(req: Request, res: Response) {
   const { uid, id } = req.params;
-  let data = await service.adjustNotification(uid, id);
+  const data = await service.adjustNotification(uid, id);
   res.status(201).json({ data });
 };
 
 async function createNotification(req: Request, res: Response) {
-  let newNotification = req.body;
+  const newNotification = req.body;
   const data = await service.createNotification(newNotification);
   res.status(201).json({ data });
 };
@@ -117,12 +117,12 @@ async function createNotification(req: Request, res: Response) {
 // Awards ------------------------------------------------------------------->
 
 async function listAwards(req: Request, res: Response) {
-  let data = await service.listAwards();
+  const data = await service.listAwards();
   return res.json({data});
 };
 
 async function createAward(req: Request, res: Response) {
-  let newAward = req.body;
+  const newAward = req.body;
   const data = await service.createAward(newAward);
   res.status(201).json({ data });
 };

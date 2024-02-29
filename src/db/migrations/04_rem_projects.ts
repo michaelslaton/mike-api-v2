@@ -12,6 +12,7 @@ export async function up (knex: Knex): Promise<void> {
     table.dateTime("date");
     table.string("type").notNullable();
     table.string("attending", 1000000);
+    table.string("regularity").notNullable().defaultTo("special");
     table.string("description").notNullable();
     table.boolean("status").notNullable().defaultTo(true);
     table.boolean("locked").notNullable().defaultTo(false);

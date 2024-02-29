@@ -11,7 +11,10 @@ export async function up (knex: Knex): Promise<void> {
       .foreign("rank")
       .references("id")
       .inTable("rem_ranks");
+    table.integer("cupcakes").notNullable().defaultTo(0);
+    table.string("aliases");
     table.boolean("admin").notNullable().defaultTo(false);
+    table.string("quote");
     table.string("description");
     table.boolean("locked").notNullable().defaultTo(false);
     table.timestamps(true, true);

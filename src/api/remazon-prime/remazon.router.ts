@@ -36,9 +36,9 @@ router
   .all(methodNotAllowed);
 
 router
-  .route("/employees/:uid")
-  .get(controller.getEmployee)
-  .all(methodNotAllowed);
+.route("/employees/:uid")
+.get(controller.getEmployee)
+.all(methodNotAllowed);
   
 router
   .route("/ranks")
