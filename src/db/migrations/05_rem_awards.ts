@@ -10,6 +10,8 @@ export async function up (knex: Knex): Promise<void> {
       .foreign("holder")
       .references("id")
       .inTable("rem_employees");
+    table.dateTime("date");
+    table.string("awardedFor");
     table.boolean("retired").defaultTo(false);
     table.timestamps(true, true);
   });
