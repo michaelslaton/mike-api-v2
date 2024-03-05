@@ -1,9 +1,9 @@
 import knex from '../../db/connections';
-import AwardType, { NewAwardType } from '../../types/awardType';
-import EmployeeType, { NewEmployeeType } from '../../types/employeeType';
-import NotificationType, { NotificationPostType } from '../../types/notificationType';
-import ProjectType, { NewProjectType } from '../../types/projectType';
-import RankType, { NewRankType } from '../../types/rankType';
+import AwardType, { NewAwardType } from '../../types/award.type';
+import EmployeeType, { NewEmployeeType } from '../../types/employee.type';
+import NotificationType, { NotificationPostType } from '../../types/notification.type';
+import ProjectType, { NewProjectType } from '../../types/project.type';
+import RankType, { NewRankType } from '../../types/rank.type';
 
 // Notifications ---------------------------------------------------------->
 
