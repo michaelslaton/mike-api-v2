@@ -1,6 +1,7 @@
 {
   "name": "mike_api",
   "version": "2.0",
+  "author": "Michael Slaton",
   "description": "Mike's all purpose api!",
   "main": "src/index.ts",
   "scripts": {
@@ -18,30 +19,29 @@
     "vercel-build": "echo hello"
   },
   "keywords": [],
-  "author": "Michael Slaton",
   "license": "MIT",
   "dependencies": {
     "cors": "^2.8.5",
-    "dotenv": "^16.1.4",
-    "express": "^4.18.2",
+    "dotenv": "^16.4.5",
+    "express": "^4.18.3",
     "knex": "^3.1.0",
     "morgan": "^1.10.0",
     "pg": "^8.11.3",
     "zod": "^3.22.4"
   },
   "devDependencies": {
-    "@types/cors": "^2.8.13",
-    "@types/express": "^4.17.17",
-    "@types/morgan": "^1.9.4",
-    "@types/node": "^20.10.4",
-    "@typescript-eslint/eslint-plugin": "^5.59.9",
-    "@typescript-eslint/parser": "^5.59.9",
-    "eslint": "^8.42.0",
-    "eslint-config-airbnb-typescript": "^17.0.0",
-    "eslint-import-resolver-typescript": "^3.5.5",
-    "eslint-plugin-import": "^2.27.5",
-    "nodemon": "^3.0.1",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/morgan": "^1.9.9",
+    "@types/node": "^20.11.24",
+    "@typescript-eslint/eslint-plugin": "^5.62.0",
+    "@typescript-eslint/parser": "^5.62.0",
+    "eslint": "^8.57.0",
+    "eslint-config-airbnb-typescript": "^17.1.0",
+    "eslint-import-resolver-typescript": "^3.6.1",
+    "eslint-plugin-import": "^2.29.1",
+    "nodemon": "^3.1.0",
     "ts-node": "^10.9.2",
-    "typescript": "^5.2.2"
+    "typescript": "^5.3.3"
   }
 }
