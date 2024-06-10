@@ -5,6 +5,7 @@ export async function up (knex: Knex): Promise<void> {
     table.increments("id").primary().unsigned().unique();
     table.string("name").notNullable();
     table.string("type").notNullable().defaultTo("belt");
+    table.string("class").notNullable().defaultTo("bronze");
     table.integer("holder").defaultTo(null);
     table
       .foreign("holder")
