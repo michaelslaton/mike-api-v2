@@ -64,7 +64,7 @@ function listProjects(): ProjectType[] {
     "rem_projects.attending",
     "rem_projects.regularity",
     "rem_projects.description",
-    "rem_projects.status"
+    "rem_projects.locked"
     )
     .innerJoin("rem_employees", "rem_projects.host", "rem_employees.id")
     .orderBy("rem_projects.id");

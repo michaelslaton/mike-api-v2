@@ -14,7 +14,6 @@ export async function up (knex: Knex): Promise<void> {
     table.string("attending", 1000000);
     table.string("regularity").notNullable().defaultTo("special");
     table.string("description").notNullable();
-    table.boolean("status").notNullable().defaultTo(true);
     table.boolean("locked").notNullable().defaultTo(false);
     table.timestamps(true, true);
   });
