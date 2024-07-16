@@ -116,7 +116,7 @@ function listProjects(): ProjectType[] {
   function listEmployees(): EmployeeType[] {
     return knex("rem_employees")
     .select("*")
-    .orderBy("rank");
+    .orderBy("id");
   };
   
   function createEmployee(employee: NewEmployeeType): EmployeeType {
