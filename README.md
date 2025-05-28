@@ -1,59 +1,33 @@
-# Express API Starter with Typescript
+# 🔧 Mike API v2
 
-How to use this template:
+This is a personal, general-purpose API built to support various side projects and experiments. It’s not tied to any single frontend or app — just a place for me to test backend ideas, data structures, and endpoints as needed.
 
-```sh
-npx create-express-api --typescript --directory my-api-name
-```
+## 📌 Purpose
 
-Includes API Server utilities:
+The main goal of this repo is to give me a backend I can control, expand, and break as I learn and build. Think of it as a sandbox API that evolves with my needs and skillset.
 
-* [morgan](https://www.npmjs.com/package/morgan)
-  * HTTP request logger middleware for node.js
-* [helmet](https://www.npmjs.com/package/helmet)
-  * Helmet helps you secure your Express apps by setting various HTTP headers. It's not a silver bullet, but it can help!
-* [dotenv](https://www.npmjs.com/package/dotenv)
-  * Dotenv is a zero-dependency module that loads environment variables from a `.env` file into `process.env`
-* [cors](https://www.npmjs.com/package/cors)
-  * CORS is a node.js package for providing a Connect/Express middleware that can be used to enable CORS with various options.
+## 🧰 Tech Stack
 
-Development utilities:
+- **Node.js**
+- **Express.js**
+- **CORS**, **dotenv**, etc.
 
-* [typescript](https://www.npmjs.com/package/typescript)
-  * TypeScript is a language for application-scale JavaScript.
-* [ts-node](https://www.npmjs.com/package/ts-node)
-  * TypeScript execution and REPL for node.js, with source map and native ESM support.
-* [nodemon](https://www.npmjs.com/package/nodemon)
-  * nodemon is a tool that helps develop node.js based applications by automatically restarting the node application when file changes in the directory are detected.
-* [eslint](https://www.npmjs.com/package/eslint)
-  * ESLint is a tool for identifying and reporting on patterns found in ECMAScript/JavaScript code.
-* [typescript-eslint](https://typescript-eslint.io/)
-  * Tooling which enables ESLint to support TypeScript.
-* [jest](https://www.npmjs.com/package/jest)
-  * Jest is a delightful JavaScript Testing Framework with a focus on simplicity.
-* [supertest](https://www.npmjs.com/package/supertest)
-  * HTTP assertions made easy via superagent.
+## 🧪 Current Features
 
-## Setup
+- 🧑‍💻 User and session routes (basic auth / login stuff)
+- 📝 Custom data models for project-specific needs
+- 📂 Modular route structure for easy expansion
+- ⚙️ `.env` support and local dev environment config
 
-```
-npm install
-```
+## 📍 Use Cases
 
-## Lint
+- Personal frontend apps during development
+- Feature experiments without risking production apps
+- Backend logic practice and refactoring
 
-```
-npm run lint
-```
+## ⚠️ Disclaimer
 
-## Test
+This repo is not production-hardened and is not intended for public consumption. Things may break, change, or get wiped entirely as I refactor or try new ideas.
 
-```
-npm run test
-```
+---
 
-## Development
-
-```
-npm run dev
-```
